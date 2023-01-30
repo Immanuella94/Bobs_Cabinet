@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class QuestSystem : MonoBehaviour
 {
+    public GameObject scullEmpty1;
+    public GameObject scullEmpty2;
+    public GameObject scullEmpty3;
+    public GameObject scullEmpty4;
+
+
     bool currentlyClosed1 = true;
     bool currentlyClosed2 = true;
     bool currentlyClosed3 = true;
@@ -1080,6 +1086,9 @@ public class QuestSystem : MonoBehaviour
                     Quest1 = false;
                     HasShirt = false;
                     ACTIVEQuest1 = false;
+                    CheckGameObject();
+
+
                 }
 
                 if (Quest2 == true)
@@ -1088,6 +1097,7 @@ public class QuestSystem : MonoBehaviour
                     Quest2 = false;
                     HasShirt = false;
                     ACTIVEQuest2 = false;
+                    CheckGameObject();
                 }
 
                 if (Quest3 == true)
@@ -1096,6 +1106,7 @@ public class QuestSystem : MonoBehaviour
                     Quest3 = false;
                     HasShirt = false;
                     ACTIVEQuest3 = false;
+                    CheckGameObject();
                 }
 
 
@@ -1129,29 +1140,33 @@ public class QuestSystem : MonoBehaviour
 
     void CheckGameObject()
     {
-        if (Counter1.activeSelf)
-        {
-
-            Counter1.SetActive(false);
-            Counter0.SetActive(true);
-
-        }
-
         if (Counter2.activeSelf)
         {
 
-            Counter2.SetActive(false);
-            Counter1.SetActive(true);
+            Counter3.SetActive(true);
+            scullEmpty3.SetActive(false);
 
         }
+            if (Counter1.activeSelf)
+            {
+                Counter2.SetActive(true);
+                scullEmpty2.SetActive(false);
 
-        if (Counter3.activeSelf)
-        {
-            // do something, if it is not active...
-            Counter3.SetActive(false);
-            Counter2.SetActive(true);
+            }
+                if (Counter0.activeSelf)
+                {
+                    // do something, if it is not active...
+                    Counter1.SetActive(true);
+                    scullEmpty1.SetActive(false);
 
-        }
+                }
+            
+        
+
+
+        
+
+        
 
     }
 

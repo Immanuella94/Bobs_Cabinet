@@ -13,6 +13,7 @@ public class Music_For_The_Game : MonoBehaviour
 
     void Start()
     {
+        //if the designers want to change the music for a scene they can just check the music in the scene :D
         if(InGame == true)
         {
             MusicMaker.clip = inGameMusic;
