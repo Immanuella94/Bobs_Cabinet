@@ -5,10 +5,23 @@ using UnityEngine;
 
 public class QuestSystem : MonoBehaviour
 {
+    bool currentlyClosed1 = true;
+    bool currentlyClosed2 = true;
+    bool currentlyClosed3 = true;
+
+    public GameObject Counter0;
+    public GameObject Counter1;
+    public GameObject Counter2;
+    public GameObject Counter3;
+    public GameObject Counter4;
+
 
     public int _Reputation = 5;
 
     public GameObject shirtOn;
+    public GameObject shirtOn2;
+
+    bool hasShirtNormal = false;
 
     Quaternion NintyRotation = Quaternion.Euler(0f, 90f, 0f);
     Quaternion NormalRotation = Quaternion.Euler(0f, 0f, 0f);
@@ -105,30 +118,59 @@ public class QuestSystem : MonoBehaviour
 
     void Update()
     {
-        if (HasShirt == true)
+        
+
+        if ((HasShirt == true) && (hasShirtNormal == false))
         {
             shirtOn.SetActive(true);
+            shirtOn2.SetActive(false);
+        }
+
+        if ((HasShirt == true) && (hasShirtNormal == true))
+        {
+            shirtOn2.SetActive(true);
+            shirtOn.SetActive(false);
         }
 
         if (HasShirt == false)
         {
             shirtOn.SetActive(false);
+            shirtOn2.SetActive(false);
         }
 
         //if Quest is finished, picture vanishes
         if (ACTIVEQuest1 == false)
         {
             targetQ1.SetActive(false);
+            //take one number away from shirt
+            if(currentlyClosed1 == true)
+            {
+                CheckGameObject();
+                currentlyClosed1 = false;
+            }
+            
         }
 
         if (ACTIVEQuest2 == false)
         {
             targetQ2.SetActive(false);
+            //take one number away from shirt
+            if (currentlyClosed2 == true)
+            {
+                CheckGameObject();
+                currentlyClosed2 = false;
+            }
+
         }
 
         if (ACTIVEQuest3 == false)
         {
             targetQ3.SetActive(false);
+            if (currentlyClosed3 == true)
+            {
+                CheckGameObject();
+                currentlyClosed3 = false;
+            }
         }
 
 
@@ -342,6 +384,7 @@ public class QuestSystem : MonoBehaviour
                 Destroy(collisionInfo.gameObject);
                 // then make HasShirt false
                 HasShirt = true;
+                hasShirtNormal = false;
             }
 
         }
@@ -356,6 +399,7 @@ public class QuestSystem : MonoBehaviour
                 Destroy(collisionInfo.gameObject);
                 // then make HasShirt false
                 HasShirt = true;
+                hasShirtNormal = false;
             }
 
         }
@@ -370,6 +414,7 @@ public class QuestSystem : MonoBehaviour
                 Destroy(collisionInfo.gameObject);
                 // then make HasShirt false
                 HasShirt = true;
+                hasShirtNormal = false;
             }
 
         }
@@ -384,6 +429,7 @@ public class QuestSystem : MonoBehaviour
                 Destroy(collisionInfo.gameObject);
                 // then make HasShirt false
                 HasShirt = true;
+                hasShirtNormal = true;
             }
 
         }
@@ -458,7 +504,7 @@ public class QuestSystem : MonoBehaviour
 
                     currentPosSlot = collisionInfo.transform.position;
                     Instantiate(normalObjVERTICALLY, currentPosSlot, NintyRotation); //rotation changing?
-                    //normalObj.transform.rotation = Quaternion.Euler(0, collisionInfo.transform.rotation.eulerAngles.y, 0); doesn't work
+                                                                                     //normalObj.transform.rotation = Quaternion.Euler(0, collisionInfo.transform.rotation.eulerAngles.y, 0); doesn't work
 
                     Destroy(collisionInfo.gameObject);
                     return;
@@ -516,7 +562,7 @@ public class QuestSystem : MonoBehaviour
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_Slot, currentPosSlot, transform.rotation); //rotation changing?
-
+                hasShirtNormal = true;
                 Destroy(collisionInfo.gameObject);
                 return;
             }
@@ -533,7 +579,7 @@ public class QuestSystem : MonoBehaviour
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_Slot, currentPosSlot, transform.rotation); //rotation changing?
-
+                hasShirtNormal = false;
                 Destroy(collisionInfo.gameObject);
                 return;
             }
@@ -550,7 +596,7 @@ public class QuestSystem : MonoBehaviour
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_Slot, currentPosSlot, transform.rotation); //rotation changing?
-
+                hasShirtNormal = false;
                 Destroy(collisionInfo.gameObject);
                 return;
             }
@@ -563,7 +609,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest3 = true;
-
+                hasShirtNormal = false;
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_Slot, currentPosSlot, transform.rotation); //rotation changing?
@@ -582,7 +628,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 NormalItem = true;
-
+                hasShirtNormal = true;
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_SlotVERTICALLY, currentPosSlot, NormalRotation); //rotation changing?
@@ -599,7 +645,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest1 = true;
-
+                hasShirtNormal = false;
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_SlotVERTICALLY, currentPosSlot, NormalRotation); //rotation changing?
@@ -616,7 +662,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest2 = true;
-
+                hasShirtNormal = false;
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_SlotVERTICALLY, currentPosSlot, NormalRotation); //rotation changing?
@@ -633,7 +679,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest3 = true;
-
+                hasShirtNormal = false;
                 //spawn item
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(normalObj_SlotVERTICALLY, currentPosSlot, NormalRotation); //rotation changing?
@@ -815,7 +861,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 NormalItem = true;
-
+                hasShirtNormal = true;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -832,7 +878,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest1 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -849,7 +895,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest2 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -866,7 +912,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest3 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -888,7 +934,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 NormalItem = true;
-
+                hasShirtNormal = true;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj_90, currentPosSlot, NintyRotation); //rotation changing?
 
@@ -905,7 +951,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest1 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj_90, currentPosSlot, NintyRotation); //rotation changing?
 
@@ -922,7 +968,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest2 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj_90, currentPosSlot, NintyRotation); //rotation changing?
 
@@ -939,7 +985,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest3 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObj_90, currentPosSlot, NintyRotation); //rotation changing?
 
@@ -959,7 +1005,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 NormalItem = true;
-
+                hasShirtNormal = true;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObjMINI, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -976,7 +1022,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest1 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObjMINI, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -993,7 +1039,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest2 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObjMINI, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -1010,7 +1056,7 @@ public class QuestSystem : MonoBehaviour
                 // reduce shirt from player
                 HasShirt = true;
                 Quest3 = true;
-
+                hasShirtNormal = false;
                 currentPosSlot = collisionInfo.transform.position;
                 Instantiate(_ClosetObjMINI, currentPosSlot, transform.rotation); //rotation changing?
 
@@ -1019,28 +1065,6 @@ public class QuestSystem : MonoBehaviour
 
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1101,6 +1125,34 @@ public class QuestSystem : MonoBehaviour
         {
             _Reputation = _Reputation + 1;
         }
+    }
+
+    void CheckGameObject()
+    {
+        if (Counter1.activeSelf)
+        {
+
+            Counter1.SetActive(false);
+            Counter0.SetActive(true);
+
+        }
+
+        if (Counter2.activeSelf)
+        {
+
+            Counter2.SetActive(false);
+            Counter1.SetActive(true);
+
+        }
+
+        if (Counter3.activeSelf)
+        {
+            // do something, if it is not active...
+            Counter3.SetActive(false);
+            Counter2.SetActive(true);
+
+        }
+
     }
 
 }
