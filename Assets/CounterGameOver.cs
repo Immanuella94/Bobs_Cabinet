@@ -8,15 +8,17 @@ public class CounterGameOver : MonoBehaviour
     void OnEnable()
     {
         //maybe wait a few seconds then game over!!
-        StartCoroutine(waiter());
-
+       
+            StartCoroutine(waiter());
+        
+        
     }
 
     IEnumerator waiter()
     {
         Debug.Log("Game Over");
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(3f);
         //go to game over scene
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }

@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace QuestSystem
-{
     public class QuestSystem : MonoBehaviour
     {
+
+        public GameObject scullEmpty1;
+        public GameObject scullEmpty2;
+        public GameObject scullEmpty3;
+        public GameObject scullEmpty4;
+
         bool currentlyClosed1 = true;
         bool currentlyClosed2 = true;
         bool currentlyClosed3 = true;
@@ -65,14 +69,40 @@ namespace QuestSystem
         Shirt_PlayerItem ShirtItemPlayerScr;
         [SerializeField] GameObject Q2_Obj;
 
-        public GameObject targetQ1;
+        public GameObject targetQ1; //Closed Request
         public GameObject targetQ2;
         public GameObject targetQ3;
 
         //The Quest posts second image
-        public GameObject targetQ1_b;
+        public GameObject targetQ1_b; //OPEN REQUEST
         public GameObject targetQ2_b;
         public GameObject targetQ3_b;
+
+        public GameObject targetQ1_c;//Open Request if NPC died  '''''''''''''''''''''''''''''''''''''''''''''''''''--------------------------00000000000000000000000000
+        public GameObject targetQ2_c;
+        public GameObject targetQ3_c;
+
+        public GameObject targetQ1_d; //closed Request if npc died
+        public GameObject targetQ2_d;
+        public GameObject targetQ3_d;
+
+        public GameObject targetQ1_e; //Open finished Request
+        public GameObject targetQ2_e;
+        public GameObject targetQ3_e;
+
+        public GameObject targetQ1_f;//closed finished Request
+        public GameObject targetQ2_f;
+        public GameObject targetQ3_f;
+
+        public bool QuestNpcDeath1; //if the npc was killed from the quest
+        public bool QuestNpcDeath2;
+        public bool QuestNpcDeath3;
+
+    int currewntlyOpen = 0; //0 non open, 1 open 1, 2 open 2 etc
+
+        public bool QuestFinished1; //if the quest is finsihed =========================================================================================
+        public bool QuestFinished2;
+        public bool QuestFinished3;
 
         public GameObject normalObj;
         public GameObject Ouest1_Obj;
@@ -175,79 +205,11 @@ namespace QuestSystem
             }
 
 
-            //If numbers 1 2 and 3 are pressed open and close the tab
-
-
-            if (((onBoard2 == true) && (Input.GetKeyDown("4"))) && ACTIVEQuest2 == true)
-            {
-                targetQ2.SetActive(true);
-                targetQ2_b.SetActive(false);
-                onBoard2 = false;
-            }
-
-            if (((onBoard3 == true) && (Input.GetKeyDown("4"))) && ACTIVEQuest3 == true)
-            {
-                targetQ3.SetActive(true);
-                targetQ3_b.SetActive(false);
-                onBoard3 = false;
-            }
-
-            if (((onBoard1 == true) && (Input.GetKeyDown("4"))) && ACTIVEQuest1 == true)
-            {
-                targetQ1.SetActive(true);
-                targetQ1_b.SetActive(false);
-                onBoard1 = false;
-            }
-
-
-            if (((Input.GetKeyDown("1")) && ACTIVEQuest1 == true) && (onBoard1 == false))
-            {
-                targetQ1.SetActive(false);
-                targetQ1_b.SetActive(true);
-
-                targetQ2.SetActive(true);
-                targetQ2_b.SetActive(false);
-
-                targetQ3.SetActive(true);
-                targetQ3_b.SetActive(false);
-                onBoard1 = true;
-                onBoard2 = false;
-                onBoard3 = false;
-            }
-
-            if (((Input.GetKeyDown("2")) && ACTIVEQuest2 == true) && (onBoard2 == false))
-            {
-                targetQ2.SetActive(false);
-                targetQ2_b.SetActive(true);
-
-                targetQ1.SetActive(true);
-                targetQ1_b.SetActive(false);
-
-                targetQ3.SetActive(true);
-                targetQ3_b.SetActive(false);
-                onBoard2 = true;
-                onBoard1 = false;
-                onBoard3 = false;
-            }
-
-            if (((Input.GetKeyDown("3")) && ACTIVEQuest3 == true) && (onBoard3 == false))
-            {
-                targetQ3.SetActive(false);
-                targetQ3_b.SetActive(true);
-
-                targetQ2.SetActive(true);
-                targetQ2_b.SetActive(false);
-
-                targetQ1.SetActive(true);
-                targetQ1_b.SetActive(false);
-                onBoard3 = true;
-                onBoard2 = false;
-                onBoard1 = false;
-            }
-
+        //If numbers 1 2 and 3 are pressed open and close the tab
+        QuestRequestManager();
 
             //Reputation
-            if (_Reputation == 6)
+        if (_Reputation == 6)
             {
                 //close every cross unless 1
                 cross1.SetActive(false);
@@ -370,6 +332,7 @@ namespace QuestSystem
             }
 
         }
+
 
         void OnCollisionStay(Collision collisionInfo)
         {
@@ -945,6 +908,7 @@ namespace QuestSystem
                 }
             }
 
+
             if ((collisionInfo.gameObject.tag == "_Closet_Q1-90") && (HasShirt == false))
             {
                 if (Input.GetKeyDown("space"))
@@ -1081,6 +1045,9 @@ namespace QuestSystem
                         Quest1 = false;
                         HasShirt = false;
                         ACTIVEQuest1 = false;
+                        CheckGameObject();
+
+
                     }
 
                     if (Quest2 == true)
@@ -1089,6 +1056,7 @@ namespace QuestSystem
                         Quest2 = false;
                         HasShirt = false;
                         ACTIVEQuest2 = false;
+                        CheckGameObject();
                     }
 
                     if (Quest3 == true)
@@ -1097,17 +1065,12 @@ namespace QuestSystem
                         Quest3 = false;
                         HasShirt = false;
                         ACTIVEQuest3 = false;
+                        CheckGameObject();
                     }
 
 
                 }
             }
-
-
-
-
-
-
 
 
         }//end of collision
@@ -1130,32 +1093,286 @@ namespace QuestSystem
 
         void CheckGameObject()
         {
-            if (Counter1.activeSelf)
-            {
-
-                Counter1.SetActive(false);
-                Counter0.SetActive(true);
-
-            }
-
             if (Counter2.activeSelf)
             {
 
-                Counter2.SetActive(false);
+                Counter3.SetActive(true);
+                scullEmpty3.SetActive(false);
+
+            }
+            if (Counter1.activeSelf)
+            {
+                Counter2.SetActive(true);
+                scullEmpty2.SetActive(false);
+
+            }
+            if (Counter0.activeSelf)
+            {
+                // do something, if it is not active...
                 Counter1.SetActive(true);
+                scullEmpty1.SetActive(false);
 
             }
 
-            if (Counter3.activeSelf)
-            {
-                // do something, if it is not active...
-                Counter3.SetActive(false);
-                Counter2.SetActive(true);
 
+
+
+        }
+
+
+        void QuestRequestManager()
+        {
+            if (Input.GetKeyDown("4")) //set them all down
+            {
+                currewntlyOpen = 0;
+            }
+
+        if ((Input.GetKeyDown("1")) && (onBoard1 == false)) //OPENING REQUEST
+        {
+            currewntlyOpen = 1;
+
+            if (currewntlyOpen == 1) //if one is open , open 1
+            {
+
+
+                if ((QuestNpcDeath1 == false) && (QuestFinished1 == false)) //normal request 1
+                {
+                    targetQ1.SetActive(false);
+                    targetQ1_b.SetActive(true);
+
+                    onBoard1 = true;
+                }
+
+                if ((QuestNpcDeath1 == true) && (QuestFinished1 == false)) //NPC died 1
+                {
+                    targetQ1_d.SetActive(false);
+                    targetQ1_c.SetActive(true);
+
+                    onBoard1 = true;
+                }
+
+                if (QuestFinished1 == true) //NPC Quest finished ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                {
+                    targetQ1_f.SetActive(false);//open requesd
+                    targetQ1_e.SetActive(true);//closeed requesd
+
+                    targetQ1_d.SetActive(false);
+                    targetQ1_c.SetActive(false);
+                    targetQ1_b.SetActive(false);
+                    targetQ1.SetActive(false);
+
+                    onBoard1 = false;
+                }
             }
 
         }
 
+        if ((Input.GetKeyDown("2")) && (onBoard2 == false)) //OPENING REQUEST
+        {
+            currewntlyOpen = 2;
+
+            if (currewntlyOpen == 2) //if one is open , open 1
+            {
+
+
+                if ((QuestNpcDeath2 == false) && (QuestFinished2 == false)) //normal request 1
+                {
+                    targetQ2.SetActive(false);
+                    targetQ2_b.SetActive(true);
+
+                    onBoard2 = true;
+                }
+
+                if ((QuestNpcDeath2 == true) && (QuestFinished2 == false)) //NPC died 1
+                {
+                    targetQ2_d.SetActive(false);
+                    targetQ2_c.SetActive(true);
+
+                    onBoard2 = true;
+                }
+
+                if (QuestFinished2 == true) //NPC Quest finished ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                {
+                    targetQ2_f.SetActive(false);//open requesd
+                    targetQ2_e.SetActive(true);//closeed requesd
+
+                    targetQ2_d.SetActive(false);
+                    targetQ2_c.SetActive(false);
+                    targetQ2_b.SetActive(false);
+                    targetQ2.SetActive(false);
+
+                    onBoard2 = false;
+                }
+            }
+
+        }
+
+        if ((Input.GetKeyDown("3")) && (onBoard3 == false)) //OPENING REQUEST
+            {
+                currewntlyOpen = 3;
+
+                if (currewntlyOpen == 3) //if one is open , open 1
+                {
+
+
+                    if ((QuestNpcDeath3 == false) && (QuestFinished3 == false)) //normal request 1
+                    {
+                        targetQ3.SetActive(false);
+                        targetQ3_b.SetActive(true);
+
+                        onBoard3 = true;
+                    }
+
+                    if ((QuestNpcDeath3 == true) && (QuestFinished3 == false)) //NPC died 1
+                    {
+                        targetQ3_d.SetActive(false);
+                        targetQ3_c.SetActive(true);
+
+                        onBoard3 = true;
+                    }
+
+                    if (QuestFinished3 == true) //NPC Quest finished ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        targetQ3_f.SetActive(false);//open requesd
+                        targetQ3_e.SetActive(true);//closeed requesd
+
+                        targetQ3_d.SetActive(false);
+                        targetQ3_c.SetActive(false);
+                        targetQ3_b.SetActive(false);
+                        targetQ3.SetActive(false);
+
+                    onBoard3 = false;
+                    }
+                }
+        
+            }
+
+        //close request
+        
+        if (currewntlyOpen != 1) //if one is not open close 1
+        {
+            if ((QuestNpcDeath1 == false) && (QuestFinished1 == false)) //normal request 1
+            {
+                targetQ1_b.SetActive(false);
+                targetQ1.SetActive(true);
+
+                onBoard1 = false;
+            }
+
+            if ((QuestNpcDeath1 == true) && (QuestFinished1 == false)) //NPC died 1
+            {
+                targetQ1_c.SetActive(false);
+                targetQ1_d.SetActive(true);
+
+                targetQ1_b.SetActive(false);
+                targetQ1.SetActive(false);
+
+                onBoard1 = false;
+            }
+
+            if (QuestFinished1 == true) //NPC Quest finished //
+            {
+                targetQ1_e.SetActive(false);
+                targetQ1_f.SetActive(true);
+
+                targetQ1_d.SetActive(false);
+                targetQ1_c.SetActive(false);
+                targetQ1_b.SetActive(false);
+                targetQ1.SetActive(false);
+
+                onBoard1 = false;
+            }
+
+
+        }
+
+        if (currewntlyOpen != 2) //if one is not open close 1
+        {
+            if ((QuestNpcDeath2 == false) && (QuestFinished2 == false)) //normal request 1
+            {
+                targetQ2_b.SetActive(false);
+                targetQ2.SetActive(true);
+
+                onBoard2 = false;
+            }
+
+            if ((QuestNpcDeath2 == true) && (QuestFinished2 == false)) //NPC died 1
+            {
+                targetQ2_c.SetActive(false);
+                targetQ2_d.SetActive(true);
+
+                targetQ2_b.SetActive(false);
+                targetQ2.SetActive(false);
+
+                onBoard2 = false;
+            }
+
+            if (QuestFinished2 == true) //NPC Quest finished //
+            {
+                targetQ2_e.SetActive(false);
+                targetQ2_f.SetActive(true);
+
+                targetQ2_d.SetActive(false);
+                targetQ2_c.SetActive(false);
+                targetQ2_b.SetActive(false);
+                targetQ2.SetActive(false);
+
+                onBoard2 = false;
+            }
+
+
+        }
+
+
+        if (currewntlyOpen != 3) //if one is not open close 1
+            {
+                if ((QuestNpcDeath3 == false) && (QuestFinished3 == false)) //normal request 1
+                {
+                    targetQ3_b.SetActive(false);
+                    targetQ3.SetActive(true);
+
+                    onBoard3 = false;
+                }
+
+                if ((QuestNpcDeath3 == true) && (QuestFinished3 == false)) //NPC died 1
+                {
+                    targetQ3_c.SetActive(false);
+                    targetQ3_d.SetActive(true);
+
+                    targetQ3_b.SetActive(false);
+                    targetQ3.SetActive(false);
+
+                onBoard3 = false;
+                }
+
+                if (QuestFinished3 == true) //NPC Quest finished //
+                {
+                    targetQ3_e.SetActive(false);
+                    targetQ3_f.SetActive(true);
+
+                    targetQ3_d.SetActive(false);
+                    targetQ3_c.SetActive(false);
+                    targetQ3_b.SetActive(false);
+                    targetQ3.SetActive(false);
+
+                onBoard3 = false;
+                }
+            
+
+        }
+
+
+
+
+
+
+
+
+
     }
 
+
+
 }
+
+

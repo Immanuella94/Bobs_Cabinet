@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 1337711388531991998}
   - component: {fileID: 2683963953586809371}
   - component: {fileID: 205949210295426769}
-  - component: {fileID: 2496659929948969046}
   - component: {fileID: -4838940472249807705}
   m_Layer: 0
   m_Name: 2Shirt Q1 - PLAYER-ITEM
-  m_TagString: Shirt_Rag_Q1
+  m_TagString: Q1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,18 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2496659929948969046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863172786118328068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7099ff5c59c734d8a36bcfb45f4c7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &-4838940472249807705
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.014374999, y: 0.0018750004, z: 0.015625002}
+  m_Size: {x: 0.014374999, y: 225.8, z: 0.015625002}
   m_Center: {x: 0, y: 0, z: -0.0015364577}
