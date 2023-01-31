@@ -6,25 +6,36 @@ using UnityEngine.UI;
 public class Player_KillingAnimation : MonoBehaviour
 {
     //maybe have it always open then span it at pos of camera (canvas cam) and then back to old position to hide?
-    public GameObject _killing;
+    public GameObject _killingB;
+    public GameObject _killingG;
+    public bool Boy = false;
+    public bool Girl = true;
     public bool _Start = false;
 
     void Start()
     {
-        _killing.SetActive(false);
+        _killingB.SetActive(false);
+        _killingG.SetActive(false);
     }
 
     void Update()
     {
         if(_Start == false)
         {
-            _killing.SetActive(false);
+            _killingB.SetActive(false);
+            _killingG.SetActive(false);
         }
 
 
-        if(_Start == true)
+        if((_Start == true) && (Boy == true))
         {
-            _killing.SetActive(true);
+            _killingB.SetActive(true);
+            StartCoroutine(waiter());
+        }
+
+        if ((_Start == true) && (Girl == true))
+        {
+            _killingG.SetActive(true);
             StartCoroutine(waiter());
         }
 
