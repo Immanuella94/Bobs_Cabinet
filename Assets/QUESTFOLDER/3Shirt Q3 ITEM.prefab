@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6526144822222999157}
   - component: {fileID: -5530483539251943451}
   - component: {fileID: -5580189983390859138}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: 3Shirt Q3 ITEM
   m_TagString: Shirt
   m_Icon: {fileID: 0}

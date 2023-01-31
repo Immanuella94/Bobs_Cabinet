@@ -172,36 +172,17 @@ using UnityEngine;
             //if Quest is finished, picture vanishes
             if (ACTIVEQuest1 == false)
             {
-                targetQ1.SetActive(false);
-                //take one number away from shirt
-                if (currentlyClosed1 == true)
-                {
-                    CheckGameObject();
-                    currentlyClosed1 = false;
-                }
-
+                QuestFinished1 = true;
             }
 
             if (ACTIVEQuest2 == false)
             {
-                targetQ2.SetActive(false);
-                //take one number away from shirt
-                if (currentlyClosed2 == true)
-                {
-                    CheckGameObject();
-                    currentlyClosed2 = false;
-                }
-
+                 QuestFinished2 = true;
             }
 
             if (ACTIVEQuest3 == false)
             {
-                targetQ3.SetActive(false);
-                if (currentlyClosed3 == true)
-                {
-                    CheckGameObject();
-                    currentlyClosed3 = false;
-                }
+                QuestFinished3 = true;
             }
 
 

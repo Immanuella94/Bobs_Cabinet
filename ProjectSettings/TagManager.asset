@@ -44,6 +44,10 @@ TagManager:
   - Door
   - waitHere
   - NPC
+  - closet
+  - NPC_B
+  - CorpsDestroyer
+  - Rack
   layers:
   - Default
   - TransparentFX
@@ -55,9 +59,9 @@ TagManager:
   - 
   - Target
   - Obstaruction
-  - 
-  - 
-  - 
+  - npc
+  - ShirtDrop
+  - Player
   - 
   - 
   - 
