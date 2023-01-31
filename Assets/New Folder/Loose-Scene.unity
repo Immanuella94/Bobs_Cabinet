@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62841872}
   - component: {fileID: 62841871}
+  - component: {fileID: 62841873}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
@@ -291,6 +292,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &62841873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62841870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e617f6ecf0f00a4abbb74ab6c7b51c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &197406081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -498,10 +511,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lucifer: Ugh I knew it. The demons are very frustrated. All you had to
-    do was to find the soul, kill it, and deliver it, and you failed to do so. Now
-    Kevin will be trash-talking me everywhere. I\u2019m very disappointed in you,
-    Bob."
+  m_text: "Ugh I knew it. The demons are very frustrated. All you had to do was to
+    find the soul, kill it, and deliver it, and you failed to do so. Now Kevin will
+    be trash-talking me everywhere. I\u2019m very disappointed in you, Bob."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e441dd21dc0c36418badc107a0fe252, type: 2}
   m_sharedMaterial: {fileID: 489353550041417863, guid: 9e441dd21dc0c36418badc107a0fe252, type: 2}

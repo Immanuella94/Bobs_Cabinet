@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/for now/8AlexScene.unity
     guid: c660d8f39ae5d16498eb26b376bc733a
   - enabled: 1
-    path: Assets/GAME OVER.unity
-    guid: 371ca039dbf204446a9bdb866a07bfc2
+    path: Assets/New Folder/Loose-Scene.unity
+    guid: fb4a71da9bb4d64468d8876708904baa
+  - enabled: 1
+    path: Assets/New Folder/Win-Scene.unity
+    guid: c117c0d4213f5144c94d8099b48fdde8
   m_configObjects: {}
