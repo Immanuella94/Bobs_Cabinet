@@ -3,7 +3,47 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - basement
+  - Slot
+  - _Closet
+  - _ClosetMINI
+  - Slot-Vertically
+  - _ClosetVertically
+  - _Closet_Normal
+  - _Closet_Q1
+  - _Closet_Q2
+  - _Closet_Q3
+  - Shirt
+  - Shirt_Rag_Normal
+  - Shirt_Rag_Q1
+  - Shirt_Rag_Q2
+  - Shirt_Rag_Q3
+  - Q2
+  - _Closet_Normal-90
+  - _Closet_Q1-90
+  - _Closet_Q2-90
+  - _Closet_Q3-90
+  - _Closet_NormalMINI
+  - _Closet_Q1MINI
+  - _Closet_Q2MINI
+  - _Closet_Q3MINI
+  - Shirt_Rag_Normal_Vertically
+  - Shirt_Rag_Q1_Vertically
+  - Shirt_Rag_Q2_Vertically
+  - Shirt_Rag_Q3_Vertically
+  - Carpet_Coll
+  - Ground
+  - Cloths
+  - Corps
+  - NormalItem
+  - Soul
+  - Soul_Item
+  - Q1
+  - Q3
+  - Door
+  - waitHere
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -13,8 +53,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Target
+  - Obstaruction
   - 
   - 
   - 
