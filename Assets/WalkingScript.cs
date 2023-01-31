@@ -15,10 +15,13 @@ using UnityEngine;
         public float runningAwaySpeed;
         public float waitTime = 5f;
         bool isWaiting = false;
+        bool canSeePlayer = false;
 
-        public int Reputation = 5;  //get component from quest system script
+    //get component from quest system script
+    public int Reputation = 5;
+    public GameObject shirtOn;
 
-        private Vector3 currentDirection;
+    private Vector3 currentDirection;
         private Vector3 theDoor;    //destroy game object at this transform
 
         [SerializeField] Transform mainTransform;
@@ -101,7 +104,8 @@ using UnityEngine;
             else if (walkingState == WalkingState.RUNNINGAWAY)
             {
                 exclamationMarkObject.SetActive(true);
-                RunnningAway();     //run away
+                BobIsSus();
+               //run away
             }
 
 
@@ -113,6 +117,20 @@ using UnityEngine;
             isWaiting = false;
             walkingState = WalkingState.LOOKING;
         }
+
+        IEnumerator WaitToSeeIfBobIsStillSus()
+    {
+        yield return new WaitForSeconds(2f);
+        if(canSeePlayer)
+        {
+            RunnningAway();
+            walkingState = WalkingState.RUNNINGAWAY;
+        }
+        else
+        {
+            walkingState = WalkingState.WAITING;
+        }
+    }
 
         void OnTriggerEnter(Collider collision)
         {
@@ -152,7 +170,16 @@ using UnityEngine;
             float v = speed + runningAwaySpeed;
             transform.position = Vector3.MoveTowards(transform.position, theDoor, v * Time.deltaTime);
         }
-
+        
+        void BobIsSus()
+        {
+        canSeePlayer = GetComponent<FieldOfView>().canSeePlayer;
+        shirtOn = GetComponent<QuestSystem>().shirtOn;
+        if (canSeePlayer  && shirtOn)
+        {
+            StartCoroutine(WaitToSeeIfBobIsStillSus());
+        }
+        }
 
     }
 
