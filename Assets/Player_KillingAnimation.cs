@@ -33,9 +33,10 @@ public class Player_KillingAnimation : MonoBehaviour
 
     void OnCollisionStay(Collision collisionInfo)
     {
-        if ((collisionInfo.gameObject.tag == "NPC_B") && Input.GetKey("space"))
+        if ((collisionInfo.gameObject.tag == "NPC") && Input.GetKeyDown(KeyCode.Q))
         {
             _Start = true;
+
         }
     }
 

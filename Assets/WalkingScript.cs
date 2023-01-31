@@ -16,10 +16,9 @@ namespace QuestSystem
         public float speed;
         public float runningAwaySpeed;
         public float waitTime = 5f;
-        float lateSpeed;
         bool isWaiting = false;
 
-        public int Reputation;  //get component from quest system script
+        public int Reputation = 5;  //get component from quest system script
 
         private Vector3 currentDirection;
         private Vector3 theDoor;    //destroy game object at this transform
@@ -32,7 +31,6 @@ namespace QuestSystem
         void Start()
         {
             targetPoint = 0;    //first array index
-            lateSpeed = speed;
             walkingState = WalkingState.WALKING;    //default starting state
         }
 
@@ -71,28 +69,33 @@ namespace QuestSystem
                 }
                 
                 //check if distance to next waypoint is small or if waypoint has been reached
-                if (Vector3.Distance(transform.position, wayPoints[targetPoint].position) < 0.1f)
+                if (Vector3.Distance(transform.position, wayPoints[targetPoint].position) < 0.01f)
                 {
                     if (isWaiting == true)
                     {
                         walkingState = WalkingState.WAITING;
                         StartCoroutine(WaitBeforeMove());   //wait for 5f
                     }
+                    else
+                    {
+                        walkingState = WalkingState.LOOKING;
+                    }
 
                 }
             }
             //waiting state
-            else if (walkingState == WalkingState.WAITING)
-            {
-                if (isWaiting == false)
-                {
-                    walkingState = WalkingState.LOOKING;
-                }
-            }
+            //else if (walkingState == WalkingState.WAITING)
+            //{
+            //    if (isWaiting == false)
+            //    {
+            //        walkingState = WalkingState.LOOKING;
+            //    }
+            //}
 
             //looking state
             else if (walkingState == WalkingState.LOOKING)
             {
+                //Debug.Log("LOOKING STATE");
                 IncreaseTargetPointInt();       //increase array index
                 walkingState = WalkingState.WALKING;
             }
@@ -110,17 +113,19 @@ namespace QuestSystem
         {
             yield return new WaitForSeconds(waitTime);
             isWaiting = false;
+            walkingState = WalkingState.LOOKING;
         }
 
-        void OnCollisionEnter(Collision collision)
+        void OnTriggerEnter(Collider collision)
         {
+            //Debug.Log("hey");
             if (collision.gameObject.CompareTag("waitHere"))    //waypoints with this tag and sphere collider
             {
                 Debug.Log("is collided");
                 isWaiting = true;
                 StartCoroutine(WaitBeforeMove());
             }
-
+          
             if (collision.gameObject.CompareTag("Door"))        //door with box collider and rigidbody
             {
                 Destroy(collision.gameObject);
