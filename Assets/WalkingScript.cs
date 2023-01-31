@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace QuestSystem
-{
     public class WalkingScript : MonoBehaviour
     {
         // [SerializeField] private bool _waiyAtTarget = false;
@@ -149,4 +147,4 @@ namespace QuestSystem
 
 
     }
-}
+
