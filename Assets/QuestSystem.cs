@@ -10,9 +10,9 @@ using UnityEngine;
         public GameObject scullEmpty3;
         public GameObject scullEmpty4;
 
-        bool currentlyClosed1 = true;
-        bool currentlyClosed2 = true;
-        bool currentlyClosed3 = true;
+       // bool currentlyClosed1 = true;
+       // bool currentlyClosed2 = true;
+       // bool currentlyClosed3 = true;
 
         public GameObject Counter0;
         public GameObject Counter1;

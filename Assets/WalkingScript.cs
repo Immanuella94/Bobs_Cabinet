@@ -19,7 +19,7 @@ using UnityEngine;
 
     //get component from quest system script
         public int Reputation;
-        public GameObject shirtOn;
+        bool shirtOn;
 
         private Vector3 currentDirection;
         private Vector3 theDoor;    //destroy game object at this transform
@@ -36,8 +36,13 @@ using UnityEngine;
             exclamationMarkObject.SetActive(false);
         }
 
-        // Update is called once per frame
-        void LateUpdate()
+    // Update is called once per frame
+    private void Update()
+    {
+        BobIsSus();
+    }
+
+    void LateUpdate()
         {
             //npc always faces camera
             Vector3 camFowardVector = new(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
@@ -48,6 +53,8 @@ using UnityEngine;
         //walking state
         if (walkingState == WalkingState.WALKING)
         {
+            
+
             //move to new waypoint
             transform.position = Vector3.MoveTowards(transform.position, wayPoints[targetPoint].position, speed * Time.deltaTime);
             //check for direction npc is moving
@@ -85,6 +92,9 @@ using UnityEngine;
 
             }
         }
+
+        
+
         //waiting state
         //else if (walkingState == WalkingState.WAITING)
         //{
@@ -95,14 +105,16 @@ using UnityEngine;
         //}
 
         //looking state
-        else if (walkingState == WalkingState.LOOKING)
+        if (walkingState == WalkingState.LOOKING)
         {
+           
             //Debug.Log("LOOKING STATE");
             IncreaseTargetPointInt();       //increase array index
             walkingState = WalkingState.WALKING;
         }
+
         //running away state
-        else if (walkingState == WalkingState.RUNNINGAWAY)
+        if (walkingState == WalkingState.RUNNINGAWAY)
         {
             Debug.Log("Running state");
             exclamationMarkObject.SetActive(true);
@@ -125,7 +137,7 @@ using UnityEngine;
 
         IEnumerator WaitToSeeIfBobIsStillSus()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.5f);
             if(canSeePlayer)
             {
                 
@@ -179,14 +191,11 @@ using UnityEngine;
         void BobIsSus()
         {
             canSeePlayer = GetComponent<FieldOfView>().canSeePlayer;
-            shirtOn = GetComponent<QuestSystem>().shirtOn;
+            shirtOn = GetComponent<QuestSystem>().HasShirt;
             if (canSeePlayer  && shirtOn)
             {
+                Debug.Log("can you see me?");
                 StartCoroutine(WaitToSeeIfBobIsStillSus());
-            }
-            else
-            {
-                walkingState = WalkingState.WALKING;
             }
         }
 
