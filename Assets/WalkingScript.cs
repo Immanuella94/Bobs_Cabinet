@@ -15,8 +15,11 @@ using UnityEngine;
         public float runningAwaySpeed;
         public float waitTime = 5f;
         bool isWaiting = false;
+        bool canSeePlayer = false;
 
-        public int Reputation = 5;  //get component from quest system script
+    //get component from quest system script
+        public int Reputation;
+        bool shirtOn;
 
         private Vector3 currentDirection;
         private Vector3 theDoor;    //destroy game object at this transform
@@ -30,10 +33,16 @@ using UnityEngine;
         {
             targetPoint = 0;    //first array index
             walkingState = WalkingState.WALKING;    //default starting state
+            exclamationMarkObject.SetActive(false);
         }
 
-        // Update is called once per frame
-        void LateUpdate()
+    // Update is called once per frame
+    private void Update()
+    {
+        BobIsSus();
+    }
+
+    void LateUpdate()
         {
             //npc always faces camera
             Vector3 camFowardVector = new(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
@@ -41,69 +50,81 @@ using UnityEngine;
             float angle = Mathf.Abs(signedAngle);
             transform.Rotate(new Vector3(0, 0, angle));
 
-            //walking state
-            if (walkingState == WalkingState.WALKING)
+        //walking state
+        if (walkingState == WalkingState.WALKING)
+        {
+            
+
+            //move to new waypoint
+            transform.position = Vector3.MoveTowards(transform.position, wayPoints[targetPoint].position, speed * Time.deltaTime);
+            //check for direction npc is moving
+            currentDirection = (wayPoints[targetPoint].position - transform.position).normalized;
+
+            if (currentDirection.x >= 0 && currentDirection.y == 0)
             {
-                //move to new waypoint
-                transform.position = Vector3.MoveTowards(transform.position, wayPoints[targetPoint].position, speed * Time.deltaTime);
-                //check for direction npc is moving
-                currentDirection = (wayPoints[targetPoint].position - transform.position).normalized;
-
-                if (currentDirection.x >= 0 && currentDirection.y == 0)
-                {
-                    animator.SetFloat("moveX", currentDirection.x);     //moving right
-                }
-                if (currentDirection.x <= 0 && currentDirection.y == 0)
-                {
-                    animator.SetFloat("moveX", currentDirection.x);     //moving left
-                }
-                if (currentDirection.y == 0 && currentDirection.z >= 0)
-                {
-                    animator.SetFloat("moveY", currentDirection.z);     //moving back
-                }
-                if (currentDirection.y == 0 && currentDirection.z <= 0)
-                {
-                    animator.SetFloat("moveY", currentDirection.z);     //moving forward
-                }
-                
-                //check if distance to next waypoint is small or if waypoint has been reached
-                if (Vector3.Distance(transform.position, wayPoints[targetPoint].position) < 0.01f)
-                {
-                    if (isWaiting == true)
-                    {
-                        walkingState = WalkingState.WAITING;
-                        StartCoroutine(WaitBeforeMove());   //wait for 5f
-                    }
-                    else
-                    {
-                        walkingState = WalkingState.LOOKING;
-                    }
-
-                }
+                animator.SetFloat("moveX", currentDirection.x);     //moving right
             }
-            //waiting state
-            //else if (walkingState == WalkingState.WAITING)
-            //{
-            //    if (isWaiting == false)
-            //    {
-            //        walkingState = WalkingState.LOOKING;
-            //    }
-            //}
-
-            //looking state
-            else if (walkingState == WalkingState.LOOKING)
+            if (currentDirection.x <= 0 && currentDirection.y == 0)
             {
-                //Debug.Log("LOOKING STATE");
-                IncreaseTargetPointInt();       //increase array index
-                walkingState = WalkingState.WALKING;
+                animator.SetFloat("moveX", currentDirection.x);     //moving left
             }
-            //running away state
-            else if (walkingState == WalkingState.RUNNINGAWAY)
+            if (currentDirection.y == 0 && currentDirection.z >= 0)
             {
-                exclamationMarkObject.SetActive(true);
-                RunnningAway();     //run away
+                animator.SetFloat("moveY", currentDirection.z);     //moving back
+            }
+            if (currentDirection.y == 0 && currentDirection.z <= 0)
+            {
+                animator.SetFloat("moveY", currentDirection.z);     //moving forward
             }
 
+            //check if distance to next waypoint is small or if waypoint has been reached
+            if (Vector3.Distance(transform.position, wayPoints[targetPoint].position) < 0.01f)
+            {
+                if (isWaiting == true)
+                {
+                    //walkingState = WalkingState.WAITING;
+                    StartCoroutine(WaitBeforeMove());   //wait for 5f
+                }
+                else
+                {
+                    walkingState = WalkingState.LOOKING;
+                }
+
+            }
+        }
+
+        
+
+        //waiting state
+        //else if (walkingState == WalkingState.WAITING)
+        //{
+        //    if (isWaiting == false)
+        //    {
+        //        walkingState = WalkingState.LOOKING;
+        //    }
+        //}
+
+        //looking state
+        if (walkingState == WalkingState.LOOKING)
+        {
+           
+            //Debug.Log("LOOKING STATE");
+            IncreaseTargetPointInt();       //increase array index
+            walkingState = WalkingState.WALKING;
+        }
+
+        //running away state
+        if (walkingState == WalkingState.RUNNINGAWAY)
+        {
+            Debug.Log("Running state");
+            exclamationMarkObject.SetActive(true);
+            RunnningAway();
+            //run away
+        }
+        else
+        {
+            BobIsSus();
+        }
 
         }
 
@@ -112,6 +133,20 @@ using UnityEngine;
             yield return new WaitForSeconds(waitTime);
             isWaiting = false;
             walkingState = WalkingState.LOOKING;
+        }
+
+        IEnumerator WaitToSeeIfBobIsStillSus()
+        {
+            yield return new WaitForSeconds(0.5f);
+            if(canSeePlayer)
+            {
+                
+                walkingState = WalkingState.RUNNINGAWAY;
+            }
+            else
+            {
+                walkingState = WalkingState.WALKING;
+            }
         }
 
         void OnTriggerEnter(Collider collision)
@@ -124,7 +159,7 @@ using UnityEngine;
                 StartCoroutine(WaitBeforeMove());
             }
           
-            if (collision.gameObject.CompareTag("Door"))        //door with box collider and rigidbody
+            if (collision.gameObject.CompareTag("basement"))        //door with box collider and rigidbody
             {
                 Destroy(collision.gameObject);
                 Debug.Log("has escaped");
@@ -148,11 +183,21 @@ using UnityEngine;
         void RunnningAway()
         {
             //change new coordinates to door and get destroyed on collision
-            theDoor = new Vector3((float)25.5669632, (float)2.69196439, (float)-1.0625);
+            theDoor = new Vector3((float)-4.69000006, (float)3.83999991, (float)-16.2600002);
             float v = speed + runningAwaySpeed;
             transform.position = Vector3.MoveTowards(transform.position, theDoor, v * Time.deltaTime);
         }
-
+        
+        void BobIsSus()
+        {
+            canSeePlayer = GetComponent<FieldOfView>().canSeePlayer;
+            shirtOn = GetComponent<QuestSystem>().HasShirt;
+            if (canSeePlayer  && shirtOn)
+            {
+                Debug.Log("can you see me?");
+                StartCoroutine(WaitToSeeIfBobIsStillSus());
+            }
+        }
 
     }
 
