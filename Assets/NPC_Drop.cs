@@ -54,7 +54,7 @@ public class NPC_Drop : MonoBehaviour
         //Wait for half a second
         yield return new WaitForSecondsRealtime(0.5f);
         //Debug.Log("Shirt spawned");
-        Instantiate(ShirtSkin_Item, new Vector3(XAxis, YAxis + 2, ZAxis), Quaternion.identity);//y +5f x =3
+        Instantiate(ShirtSkin_Item, new Vector3(XAxis, YAxis + 4, ZAxis), Quaternion.identity);//y +5f x =3
         PlayerObj.GetComponent<Player_KillingAnimation>()._Start = true;
 
         if(Quest1 == true)

@@ -266,7 +266,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d00adf621904f1347b6b2003be9c29fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3db3dc46ea1b1c04ebc647af293b9790, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -285,7 +285,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62841870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.42, y: 2.12, z: -0.89}
+  m_LocalPosition: {x: -0.07, y: 2.12, z: -0.89}
   m_LocalScale: {x: 0.29427996, y: 0.29427996, z: 0.29427996}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -488,7 +488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.3406997, y: -6.676133}
+  m_AnchoredPosition: {x: 3.44, y: -6.51}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984656660
@@ -513,7 +513,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Ugh I knew it. The demons are very frustrated. All you had to do was to
     find the soul, kill it, and deliver it, and you failed to do so. Now Kevin will
-    be trash-talking me everywhere. I\u2019m very disappointed in you, Bob."
+    be trash-talking me everywhere. I\u2019m very disappointed in you, Bob. Kiss
+    your dream goodbye!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e441dd21dc0c36418badc107a0fe252, type: 2}
   m_sharedMaterial: {fileID: 489353550041417863, guid: 9e441dd21dc0c36418badc107a0fe252, type: 2}
@@ -522,8 +523,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

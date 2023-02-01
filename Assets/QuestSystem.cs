@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class QuestSystem : MonoBehaviour
     {
 
+    public GameObject QuestLucifer;
+    public GameObject BelzeboobQuest;
+    public GameObject LeviathanQuest;
+
         public GameObject scullEmpty1;
         public GameObject scullEmpty2;
         public GameObject scullEmpty3;
@@ -129,13 +133,17 @@ public class QuestSystem : MonoBehaviour
         public bool Quest2 = false;
         public bool Quest3 = false;
 
-        public bool HasShirt = false;
+    bool PlayThisOnce1 = true;
+    bool PlayThisOnce2 = true;
+    bool PlayThisOnce3 = true;
+
+    public bool HasShirt = false;
 
         bool onBoard1 = false;
         bool onBoard2 = false;
         bool onBoard3 = false;
 
-
+   // bool QuestOnce = false; 
         void Start()
         {
             targetQ1.SetActive(true);
@@ -170,21 +178,38 @@ public class QuestSystem : MonoBehaviour
                 shirtOn2.SetActive(false);
             }
 
-            //if Quest is finished, picture vanishes
-            if (ACTIVEQuest1 == false)
+        if (Input.anyKeyDown)
+        {
+            QuestLucifer.SetActive(false);
+            LeviathanQuest.SetActive(false);
+            BelzeboobQuest.SetActive(false);
+
+        }
+
+        //if Quest is finished, picture vanishes
+        if ((ACTIVEQuest1 == false) && (PlayThisOnce1 == true))
             {
                 QuestFinished1 = true;
-            }
+            QuestLucifer.SetActive(true);
+            PlayThisOnce1 = false;
 
-            if (ACTIVEQuest2 == false)
-            {
+
+
+        }
+
+            if ((ACTIVEQuest2 == false) && (PlayThisOnce2 == true))
+        {
                  QuestFinished2 = true;
-            }
+            BelzeboobQuest.SetActive(true);
+            PlayThisOnce2 = false;
+        }
 
-            if (ACTIVEQuest3 == false)
-            {
+            if ((ACTIVEQuest3 == false) && (PlayThisOnce3 == true))
+        {
                 QuestFinished3 = true;
-            }
+            LeviathanQuest.SetActive(true);
+            PlayThisOnce3 = false;
+        }
 
             if((ACTIVEQuest1 == false) && (ACTIVEQuest2 == false) && (ACTIVEQuest3 == false))
         {
@@ -305,7 +330,7 @@ public class QuestSystem : MonoBehaviour
                 Paint6.SetActive(false);
             }
 
-
+            /*
             //For me to test it
             if (Input.GetKeyDown("f"))
             {
@@ -317,7 +342,7 @@ public class QuestSystem : MonoBehaviour
             {
                 Give_Reputation();
                 Debug.Log("gave reputation: " + _Reputation);
-            }
+            }*/
 
         }
 

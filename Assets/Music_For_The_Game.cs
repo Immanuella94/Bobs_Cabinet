@@ -33,4 +33,12 @@ public class Music_For_The_Game : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(escape))
+        {
+            Application.Quit();
+        }
+    }
+
 }
