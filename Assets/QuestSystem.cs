@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-    public class QuestSystem : MonoBehaviour
+public class QuestSystem : MonoBehaviour
     {
 
         public GameObject scullEmpty1;
@@ -185,6 +186,12 @@ using UnityEngine;
                 QuestFinished3 = true;
             }
 
+            if((ACTIVEQuest1 == false) && (ACTIVEQuest2 == false) && (ACTIVEQuest3 == false))
+        {
+            //go to winning screen
+            SceneManager.LoadScene(4);
+
+        }
 
         //If numbers 1 2 and 3 are pressed open and close the tab
         QuestRequestManager();

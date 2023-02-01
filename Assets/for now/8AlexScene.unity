@@ -20191,6 +20191,14 @@ PrefabInstance:
       propertyPath: _killing
       value: 
       objectReference: {fileID: 1939455605}
+    - target: {fileID: 5243838736558635612, guid: ea8fd32c56a42b2419c751225a0d6068, type: 3}
+      propertyPath: _killingB
+      value: 
+      objectReference: {fileID: 1939455605}
+    - target: {fileID: 5243838736558635612, guid: ea8fd32c56a42b2419c751225a0d6068, type: 3}
+      propertyPath: _killingG
+      value: 
+      objectReference: {fileID: 1133870342}
     - target: {fileID: 6291878321465579089, guid: ea8fd32c56a42b2419c751225a0d6068, type: 3}
       propertyPath: healthbar
       value: 
@@ -42375,6 +42383,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132700510}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1133870342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2804750322063326002, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+  m_PrefabInstance: {fileID: 144960737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1134063616
 PrefabInstance:
   m_ObjectHideFlags: 0
