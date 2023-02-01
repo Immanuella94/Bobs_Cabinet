@@ -3063,7 +3063,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 140329989}
   animator: {fileID: 2000577704}
   spriteRenderer: {fileID: 2000577701}
@@ -3275,6 +3275,26 @@ PrefabInstance:
     - target: {fileID: 3289389659964117729, guid: 423259bd4535761428b62b5f220336c5, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -187.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289389660303034824, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289389660303034824, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c6cd9b28caf64974aba5b98984aa62b, type: 2}
+    - target: {fileID: 3289389660303034824, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5440312968602878338, guid: 2c6cd9b28caf64974aba5b98984aa62b, type: 2}
+    - target: {fileID: 3289389660303034824, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289389660303034824, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3289389660733336928, guid: 423259bd4535761428b62b5f220336c5, type: 3}
       propertyPath: m_Name
@@ -4176,7 +4196,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 180018849}
   animator: {fileID: 568074850}
   spriteRenderer: {fileID: 568074847}
@@ -4825,7 +4845,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 198305813}
   animator: {fileID: 565130189}
   spriteRenderer: {fileID: 565130186}
@@ -6341,7 +6361,7 @@ GameObject:
   - component: {fileID: 255611857}
   m_Layer: 10
   m_Name: Sphere (5)
-  m_TagString: Untagged
+  m_TagString: waitHere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12565,7 +12585,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 318365666}
   animator: {fileID: 34116398}
   spriteRenderer: {fileID: 34116395}
@@ -40827,6 +40847,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8603048067877293619, guid: 384ac069bc86d4323bb0ae3be8523eca, type: 3}
   m_PrefabInstance: {fileID: 503038233}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050557636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3289389660303034830, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+  m_PrefabInstance: {fileID: 144960737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1050557640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050557636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa08fd3ae9981ba418854c8f9be2a12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: BOB DO SOEMTHING
+  textColor: {r: 0, g: 0, b: 0, a: 0}
+  textFont: {fileID: 0}
 --- !u!1001 &1056314218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42204,7 +42244,7 @@ GameObject:
   - component: {fileID: 1108638256}
   m_Layer: 10
   m_Name: Sphere (11)
-  m_TagString: Untagged
+  m_TagString: waitHere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50132,7 +50172,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 1276544117}
   animator: {fileID: 1197337378}
   spriteRenderer: {fileID: 1197337379}
@@ -52265,7 +52305,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 1365380614}
   animator: {fileID: 188594592}
   spriteRenderer: {fileID: 188594589}
@@ -66696,6 +66736,102 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de58cb394a0eb45fd80faaaa6acad710, type: 3}
   m_PrefabInstance: {fileID: 661886305}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1593485210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593485211}
+  - component: {fileID: 1593485214}
+  - component: {fileID: 1593485213}
+  - component: {fileID: 1593485212}
+  m_Layer: 5
+  m_Name: Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1593485211
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593485210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.19, y: 7.13, z: 1.26}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1863705043}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1593485212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593485210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa08fd3ae9981ba418854c8f9be2a12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: Mama Mia, here we go again
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  textFont: {fileID: 12800000, guid: 6c0dd81e4f290494fba10432ceb8317e, type: 3}
+--- !u!114 &1593485213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593485210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6c0dd81e4f290494fba10432ceb8317e, type: 3}
+    m_FontSize: 300
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 2
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1593485214
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593485210}
+  m_CullTransparentMesh: 1
 --- !u!1 &1594043928
 GameObject:
   m_ObjectHideFlags: 0
@@ -73948,7 +74084,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 1687788005}
   animator: {fileID: 2010835627}
   spriteRenderer: {fileID: 2010835624}
@@ -76292,7 +76428,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 1777673921}
   animator: {fileID: 1317905924}
   spriteRenderer: {fileID: 1317905921}
@@ -82992,6 +83128,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 315cb47161d66481096cd9bb7fd90523, type: 3}
   m_PrefabInstance: {fileID: 1862230398}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1863705043 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3289389659964117729, guid: 423259bd4535761428b62b5f220336c5, type: 3}
+  m_PrefabInstance: {fileID: 144960737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1865457712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de58cb394a0eb45fd80faaaa6acad710, type: 3}
@@ -83622,7 +83763,7 @@ MonoBehaviour:
   runningAwaySpeed: 15
   waitTime: 5
   Reputation: 0
-  shirtOn: {fileID: 0}
+  shirtOn: {fileID: 291994306}
   mainTransform: {fileID: 1887149986}
   animator: {fileID: 784096163}
   spriteRenderer: {fileID: 784096160}
@@ -84054,7 +84195,7 @@ GameObject:
   - component: {fileID: 1927417227}
   m_Layer: 10
   m_Name: Sphere (4)
-  m_TagString: Untagged
+  m_TagString: waitHere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

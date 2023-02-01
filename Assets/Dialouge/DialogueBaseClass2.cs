@@ -11,11 +11,10 @@ namespace Dialoguesystem2
         {
             textHolder.color = textColor;
             textHolder.font = textFont;
-            textHolder.fontSize = 20;
             for (int i = 0; i < input.Length; i++)
             {
                 textHolder.text += input[i];
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.2f);
             }
         }
     }
