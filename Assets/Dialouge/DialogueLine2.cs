@@ -19,11 +19,24 @@ namespace Dialoguesystem2
 
         [Header("Time Parameters")]
         [SerializeField] private float delay;
+        [SerializeField] private float delayBetweenLines;
+
+        [Header("Character Image")]
+        [SerializeField] private Sprite characterSprite;
+        [SerializeField] private Image imageHolder;
 
         private void Awake()
         {
             textHolder = GetComponent<Text>();
-            StartCoroutine(WriteText(input, textHolder, textColor, textFont, sound, delay));
+            textHolder.text = "";
+
+            imageHolder.sprite = characterSprite;
+            imageHolder.preserveAspect = true;
+        }
+
+        private void Start()
+        {
+            StartCoroutine(WriteText(input, textHolder, textColor, textFont, sound, delay, delayBetweenLines));
         }
     }
 }

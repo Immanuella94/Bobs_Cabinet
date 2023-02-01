@@ -7,7 +7,9 @@ namespace Dialoguesystem2
 {
     public class DialogueBaseClass2 : MonoBehaviour
     {
-        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, AudioClip sound, float delay)
+        public bool Finished { get; private set; }
+
+        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, AudioClip sound, float delay, float delayBetweenLines)
         {
             textHolder.color = textColor;
             textHolder.font = textFont;
@@ -17,6 +19,9 @@ namespace Dialoguesystem2
                 SoundManager.instance.PlaySound(sound);
                 yield return new WaitForSeconds(delay);
             }
+             yield return new WaitForSeconds(delayBetweenLines);
+            //yield return new WaitUntil(() => Input.GetButtonUp("Space"));
+            Finished = true;
         }
     }
 }
